@@ -1,5 +1,5 @@
-const {createStore}=require("redux")
-
+const {createStore, applyMiddleware}=require("redux")
+const {default:logger}=require("redux-logger")
 
 
 const increment="increment"
@@ -43,7 +43,7 @@ const counterReducer = (state = initialState, action) => {
 
 
 
-const store = createStore(counterReducer)
+const store = createStore(counterReducer,applyMiddleware(logger))
 
 store.subscribe(()=>{
     console.log(store.getState())
